@@ -3,7 +3,9 @@ const app = require('../../src/app');
 
 describe('checkSoftGate Middleware', () => {
   it('should return 401 Unauthorized if no x-mock-user header is provided', async () => {
-    const res = await request(app).post('/api/v1/jobs');
+    const res = await request(app)
+      .post('/api/v1/jobs')
+      .send({ gps: { lat: 0, lng: 0 } });
     expect(res.status).toBe(401);
   });
 
@@ -11,7 +13,8 @@ describe('checkSoftGate Middleware', () => {
     const mockUser = { id: 'test', verification_status: 'PENDING' };
     const res = await request(app)
       .post('/api/v1/jobs')
-      .set('x-mock-user', JSON.stringify(mockUser));
+      .set('x-mock-user', JSON.stringify(mockUser))
+      .send({ gps: { lat: 0, lng: 0 } });
     expect(res.status).toBe(403);
   });
 
@@ -19,7 +22,8 @@ describe('checkSoftGate Middleware', () => {
     const mockUser = { id: 'test', verification_status: 'APPROVED' };
     const res = await request(app)
       .post('/api/v1/jobs')
-      .set('x-mock-user', JSON.stringify(mockUser));
+      .set('x-mock-user', JSON.stringify(mockUser))
+      .send({ gps: { lat: 0, lng: 0 } });
     expect(res.status).toBe(201);
   });
 
@@ -27,7 +31,8 @@ describe('checkSoftGate Middleware', () => {
     const mockUser = { id: 'test', verification_status: 'VERIFIED' };
     const res = await request(app)
       .post('/api/v1/jobs')
-      .set('x-mock-user', JSON.stringify(mockUser));
+      .set('x-mock-user', JSON.stringify(mockUser))
+      .send({ gps: { lat: 0, lng: 0 } });
     expect(res.status).toBe(201);
   });
 });

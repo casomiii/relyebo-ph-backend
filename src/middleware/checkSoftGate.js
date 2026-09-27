@@ -12,7 +12,7 @@ const checkSoftGate = (req, res, next) => {
     return res.status(401).json({ message: 'Unauthorized' });
   }
 
-  if (user.verification_status === 'PENDING') {
+  if (user.verification_status !== 'VERIFIED' && user.verification_status !== 'APPROVED') {
     return res.status(403).json({ message: 'Forbidden' });
   }
 
