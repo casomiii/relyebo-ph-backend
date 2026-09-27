@@ -1,20 +1,21 @@
 {
   "name": "relyebo-ph-backend",
-  "version": "1.0.0",
-  "description": "RELYEBO PH v5.2 - Task 2 Merged Final - idempotency + state machine + GPS guard",
+  "version": "5.2.0",
+  "description": "RELYEBO PH v5.2 - Directive 1 Background Grinders baseline",
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
-    "test": "jest --detectOpenHandles --runInBand --testTimeout=10000"
+    "test": "jest --detectOpenHandles --runInBand --testTimeout=10000",
+    "test:uat": "jest tests/uat --runInBand"
   },
   "dependencies": {
     "express": "^4.19.2",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "jest": "^29.7.0",
-    "nodemon": "^3.0.1",
-    "supertest": "^6.3.4"
+    "supertest": "^6.3.4",
+    "nodemon": "^3.0.1"
   }
 }
