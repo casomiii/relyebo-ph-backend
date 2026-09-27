@@ -1,15 +1,16 @@
 {
   "name": "relyebo-ph-backend",
   "version": "1.0.0",
-  "description": "RELYEBO PH v5.2 - Backend with checkSoftGate",
+  "description": "RELYEBO PH v5.2 - Task 2 Merged Final - idempotency + state machine + GPS guard",
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
-    "test": "jest --detectOpenHandles --runInBand"
+    "test": "jest --detectOpenHandles --runInBand --testTimeout=10000"
   },
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "jest": "^29.7.0",
