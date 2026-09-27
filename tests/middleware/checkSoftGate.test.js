@@ -35,4 +35,12 @@ describe('checkSoftGate Middleware', () => {
       .send({ gps: { lat: 0, lng: 0 } });
     expect(res.status).toBe(201);
   });
+
+  it('should allow GET requests even if user has PENDING status', async () => {
+    const mockUser = { id: 'test', verification_status: 'PENDING' };
+    const res = await request(app)
+      .get('/api/v1/jobs/count')
+      .set('x-mock-user', JSON.stringify(mockUser));
+    expect(res.status).toBe(200);
+  });
 });
