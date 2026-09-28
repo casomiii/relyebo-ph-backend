@@ -12,7 +12,13 @@ const checkSoftGate = (req, res, next) => {
     return res.status(401).json({ message: 'Unauthorized' });
   }
 
-  if (user.verification_status !== 'VERIFIED' && user.verification_status !== 'APPROVED') {
+  const mutatingMethods = ['POST', 'PUT', 'PATCH', 'DELETE'];
+
+  if (
+    mutatingMethods.includes(req.method) &&
+    user.verification_status !== 'VERIFIED' &&
+    user.verification_status !== 'APPROVED'
+  ) {
     return res.status(403).json({ message: 'Forbidden' });
   }
 
